@@ -20,6 +20,10 @@ class App extends React.Component{
     });
   }
 
+  componentDidUpdate() {
+    console.log('IT UPDATE?')
+  }
+
   componentWillUnmount() {
     base.removeBinding(this.ref);
   }
@@ -32,15 +36,16 @@ class App extends React.Component{
   //  3. set new fishes object to state
     this.setState({ fishes });
   };
+
   loadSampleFishes = () => {
     this.setState({ fishes: sampleFishes})
   };
 
   addToOrder = (key) => {
   //  1. take a copy of state
-    const order = {...this.state.order}
+    const order = {...this.state.order};
   //  2. either add to the order or update the number in our order
-    order[key] = order.fish1 + 1 || 1;
+    order[key] = order[key] + 1 || 1;
   // 3. call setState to update our state object
     this.setState({ order });
   }
